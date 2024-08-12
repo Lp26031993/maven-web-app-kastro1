@@ -1,10 +1,12 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven 3.9.8' // Use the name you configured in Jenkins
+    }
     stages {
         stage('Build') {
             steps {
                 script {
-                    // Use Maven to build the project
                     sh 'mvn clean install'
                 }
             }
@@ -12,7 +14,6 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    // Run tests using Maven
                     sh 'mvn test'
                 }
             }
@@ -20,7 +21,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Add deployment steps here
                     echo 'Deploying...'
                 }
             }
@@ -32,4 +32,3 @@ pipeline {
         }
     }
 }
-
